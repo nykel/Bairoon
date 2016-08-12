@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="nome" type="id" />
+    <item name="btSalvar" type="id" />
+    <item name="btListar" type="id" />
+</resources>

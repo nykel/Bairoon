@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Bairoon</string>
+
+    <string name="lbl_home">Home</string>
+    <string name="lbl_home_desc">Voltar para o início</string>
+    <string name="lbl_como_anunciar">Como Anunciar</string>
+    <string name="lbl_como_anunciar_desc">Faça parte do nosso portal</string>
+    <string name="lbl_eventos">Eventos</string>
+    <string name="lbl_eventos_desc">Os melhores eventos do bairro</string>
+    <string name="lbl_mensagens">Mensagens</string>
+    <string name="lbl_mensagens_desc">Comunicados do Bairoon</string>
+    <string name="lbl_pesquisar">Pesquisar</string>
+    <string name="lbl_pesquisar_desc">Pesquisar empresas e serviços</string>
+    <string name="lbl_configuracoes">Configurações</string>
+    <string name="lbl_notificacoes">Notificações</string>
+    <string name="lbl_sair">Sair</string>
+    <string name="lbl_sobre_o_app">Sobre o Bairoon</string>
+    <string name="lbl_sobre_o_app_desc">Sobre nós e nossos serviços</string>
+
+</resources>
