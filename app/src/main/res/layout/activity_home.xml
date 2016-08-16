@@ -21,6 +21,22 @@
             android:textColor="@color/colorBlack"
             android:text="HOME" />
 
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Depositar"
+            android:id="@+id/btDepositar"
+            />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="REcuperar TRansacoes"
+            android:id="@+id/btRecuperarTransacoes"
+            />
+
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton

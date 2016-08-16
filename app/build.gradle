@@ -73,6 +73,8 @@ dependencies {
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:converter-scalars:2.0.0-beta3'
+
     compile ('com.squareup.retrofit2:converter-simplexml:2.0.0-beta4')
             {
                 exclude module: 'stax-api'
