@@ -17,7 +17,9 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -26,8 +28,11 @@ import com.mikepenz.materialdrawer.holder.BadgeStyle;
 import com.mikepenz.materialdrawer.holder.StringHolder;
 import com.mikepenz.materialdrawer.interfaces.OnCheckedChangeListener;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.ExpandableDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileSettingDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SwitchDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
@@ -70,13 +75,16 @@ public class InstaladorNavigationDrawerBairoon {
                         //.withHeaderBackground(new ColorDrawable(ContextCompat.getColor(activity, R.color.colorPrimary)))
                 .withHeaderBackground(R.drawable.header4)
                         //.withHeightDp(80)
-                .withDividerBelowHeader(true)
+                .withDividerBelowHeader(false)
                 .withSavedInstance(savedInstanceState)
                 .withSelectionListEnabledForSingleProfile(false)
                 .withProfileImagesVisible(false)
-                .withPaddingBelowHeader(true)
+                .withPaddingBelowHeader(false)
                 .withCurrentProfileHiddenInList(false)
-                        // .addProfiles(profile)
+                .addProfiles(profile,
+                        new ProfileSettingDrawerItem().withName("Add Account").withDescription("Add new GitHub Account").withIcon(new IconicsDrawable(activity, GoogleMaterial.Icon.gmd_plus).actionBar().paddingDp(5).colorRes(R.color.material_drawer_primary_text)).withIdentifier(1),
+                        new ProfileSettingDrawerItem().withName("Manage Account").withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(100001)
+                )
                 .withOnlyMainProfileImageVisible(false)
                 .withAlternativeProfileHeaderSwitching(true)
                 .withSelectionFirstLine(profile.getName().toString())
@@ -137,16 +145,20 @@ public class InstaladorNavigationDrawerBairoon {
                                 .withTextColor(ContextCompat.getColor(activity, R.color.colorSecondaryDark))
                                 .withIcon(Octicons.Icon.oct_home),
                         new DividerDrawerItem(),
-                        new PrimaryDrawerItem()
-                                .withName(R.string.lbl_pesquisar)
-                                .withDescriptionTextColor(ContextCompat.getColor(activity, R.color.material_drawer_hint_text))
-                                .withIdentifier(ActionsBairoon.PESQUISAR.getIdentificador())
-                                .withDescription(R.string.lbl_pesquisar_desc)
-                                .withDescriptionTextColor(ContextCompat.getColor(activity, R.color.material_drawer_hint_text))
-                                .withTypeface(typeFaceDosisBold)
-                                .withTextColor(ContextCompat.getColor(activity, R.color.colorSecondaryDark))
-                                .withIcon(Octicons.Icon.oct_search)
-                                .withSelectable(false),
+                        new ExpandableDrawerItem().withName("Pesquisar").withIcon(GoogleMaterial.Icon.gmd_search_for).withIdentifier(19).withSelectable(false).withSubItems(
+                                new PrimaryDrawerItem()
+                                        .withName(R.string.lbl_pesquisar)
+                                        .withDescriptionTextColor(ContextCompat.getColor(activity, R.color.material_drawer_hint_text))
+                                        .withIdentifier(ActionsBairoon.PESQUISAR.getIdentificador())
+                                        .withDescription(R.string.lbl_pesquisar_desc)
+                                        .withDescriptionTextColor(ContextCompat.getColor(activity, R.color.material_drawer_hint_text))
+                                        .withTypeface(typeFaceDosisBold)
+                                        .withTextColor(ContextCompat.getColor(activity, R.color.colorSecondaryDark))
+                                        .withIcon(Octicons.Icon.oct_search)
+                                        .withSelectable(false),
+                                new SecondaryDrawerItem().withName("CollapsableItem").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_search).withIdentifier(2000),
+                                new SecondaryDrawerItem().withName("CollapsableItem 2").withLevel(2).withIcon(GoogleMaterial.Icon.gmd_8tracks).withIdentifier(2001)
+                        ),
 /*                        new PrimaryDrawerItem().withName(R.string.lbl_eventos)
                                 .withDescription(R.string.lbl_eventos_desc)
                                 .withSelectedTextColor(ContextCompat.getColor(activity, R.color.material_drawer_selected_text))
@@ -192,16 +204,25 @@ public class InstaladorNavigationDrawerBairoon {
                                 .withIdentifier(ActionsBairoon.NOTIFICACOES.getIdentificador())
                                 .withIcon(GoogleMaterial.Icon.gmd_vibration)
                                 .withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener)
-                                .withTextColor(ContextCompat.getColor(activity, R.color.colorSecondaryDark)),
+                                .withTextColor(ContextCompat.getColor(activity, R.color.colorSecondaryDark))
                         //  new ToggleDrawerItem().withName("Chat").withIcon(Octicons.Icon.oct_comment_discussion).withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener).withTextColor(ContextCompat.getColor(activity, R.color.colorSecondaryDark)),
-                        new DividerDrawerItem(),
+                       /* new DividerDrawerItem()*/
+       /*                 new PrimaryDrawerItem()
+                                .withName(R.string.lbl_sobre_o_app)
+                                .withDescription(R.string.lbl_sobre_o_app_desc)
+                                .withDescriptionTextColor(ContextCompat.getColor(activity, R.color.material_drawer_hint_text))
+                                .withIdentifier(ActionsBairoon.SOBRE_O_APP.getIdentificador()).withTypeface(typeFaceDosisBold)
+                                .withTextColor(ContextCompat.getColor(activity, R.color.colorSecondaryDark))*/
+                )
+                .withSliderBackgroundColor(ContextCompat.getColor(activity, R.color.material_drawer_primary_dark))
+                .addStickyDrawerItems(
                         new PrimaryDrawerItem()
                                 .withName(R.string.lbl_sobre_o_app)
                                 .withDescription(R.string.lbl_sobre_o_app_desc)
                                 .withDescriptionTextColor(ContextCompat.getColor(activity, R.color.material_drawer_hint_text))
                                 .withIdentifier(ActionsBairoon.SOBRE_O_APP.getIdentificador()).withTypeface(typeFaceDosisBold)
-                                .withTextColor(ContextCompat.getColor(activity, R.color.colorSecondaryDark)))
-                .withSliderBackgroundColor(ContextCompat.getColor(activity, R.color.material_drawer_primary_dark))
+                                .withTextColor(ContextCompat.getColor(activity, R.color.colorSecondaryDark))
+                )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {

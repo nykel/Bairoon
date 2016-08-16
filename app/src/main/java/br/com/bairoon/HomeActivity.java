@@ -12,6 +12,7 @@ import com.mikepenz.materialdrawer.Drawer;
 
 import br.com.bairoon.model.bean.Usuario;
 import br.com.bairoon.model.negocio.navigationdrawer.InstaladorNavigationDrawerBairoon;
+import br.com.bairoon.model.service.SincronizadorNeon;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -36,7 +37,13 @@ public class HomeActivity extends AppCompatActivity {
         btPesquisar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent activityPesquisar = new Intent("PESQUISAR");
+
+
+                SincronizadorNeon sincronizadorNeon = new SincronizadorNeon();
+
+                sincronizadorNeon.inciarConexao();
+
+/*                Intent activityPesquisar = new Intent("PESQUISAR");
 
                 Bundle parametrosEnviar = new Bundle();
                 parametrosEnviar.putParcelable(Usuario.class.getName(), usuario);
@@ -45,7 +52,7 @@ public class HomeActivity extends AppCompatActivity {
 
                 startActivity(activityPesquisar);
 
-                Toast.makeText(activity, usuario.getNome(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, usuario.getNome(), Toast.LENGTH_SHORT).show();*/
             }
         });
 
